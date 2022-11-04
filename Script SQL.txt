@@ -1,0 +1,52 @@
+CREATE DATABASE portfolio
+CREATE TABLE web_profile (
+    id INT NOT NULL,
+    name VARCHAR(15),
+    last_name VARCHAR(20),
+    job VARCHAR(45),
+    nationality VARCHAR(45),
+    location VARCHAR(45),
+    adress VARCHAR(45),
+    date_of_birth DATE,
+    phone VARCHAR(15),
+    email VARCHAR(15),
+    about VARCHAR(300)
+);
+ALTER TABLE web_profile
+ADD PRIMARY_KEY (id);
+
+CREATE TABLE experiences (
+    id INT NOT NULL,
+    position VARCHAR(45),
+    company VARCHAR(45),
+    start DATE,
+    end DATE,
+    mode VARCHAR(45)
+);
+ALTER TABLE experiences
+ADD PRIMARY_KEY (id);
+ALTER TABLE experiences ADD FOREIGN_KEY (id_web_profile)
+REFERENCES web_profile (id);
+
+CREATE TABLE studies (
+    id INT NOT NULL,
+    school VARCHAR(45),
+    title VARCHAR(45),
+    career VARCHAR(45),
+    start DATE,
+    end DATE
+);
+ALTER TABLE studies
+ADD PRIMARY_KEY (id);
+ALTER TABLE studies ADD FOREIGN_KEY (id_web_profile)
+REFERENCES web_profile (id);
+
+CREATE TABLE skills (
+    id INT NOT NULL,
+    skill VARCHAR(45),
+    value VARCHAR(3)
+);
+ALTER TABLE skills
+ADD PRIMARY_KEY (id);
+ALTER TABLE skills ADD FOREIGN_KEY (id_web_profile)
+REFERENCES web_profile (id);
